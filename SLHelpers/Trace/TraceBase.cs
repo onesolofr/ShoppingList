@@ -1,5 +1,7 @@
 ﻿using log4net;
 using log4net.Config;
+using log4net.Core;
+using log4net.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,14 +21,10 @@ namespace SLHelpers
     {
         protected ILog _logger;
 
-        protected TraceBase(string name)
+        protected TraceBase(string repositoryName, string name)
         {
-            _logger = LogManager.GetLogger(name);
-        }
-
-        static TraceBase()
-        {
-            XmlConfigurator.Configure();
+            XmlConfigurator.Configure(LoggerManager.CreateRepository(repositoryName));
+            _logger = LogManager.GetLogger(repositoryName, name);
         }
 
         protected string GetExceptionData(Exception exception)
