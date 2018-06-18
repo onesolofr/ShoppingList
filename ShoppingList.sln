@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLEntities", "SLEntities\SLEntities.csproj", "{A02337FB-C800-44C8-AECC-89D16F0C95ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLEntities", "SLEntities\SLEntities.csproj", "{A02337FB-C800-44C8-AECC-89D16F0C95ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLApp", "SLApp\SLApp.csproj", "{4A8D49F4-4E08-41BB-96A5-D30A3CB6CDA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHelpers", "SLHelpers\SLHelpers.csproj", "{040ED554-56EB-4D67-82B5-9025F21449B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A02337FB-C800-44C8-AECC-89D16F0C95ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A02337FB-C800-44C8-AECC-89D16F0C95ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A02337FB-C800-44C8-AECC-89D16F0C95ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8D49F4-4E08-41BB-96A5-D30A3CB6CDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8D49F4-4E08-41BB-96A5-D30A3CB6CDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8D49F4-4E08-41BB-96A5-D30A3CB6CDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8D49F4-4E08-41BB-96A5-D30A3CB6CDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040ED554-56EB-4D67-82B5-9025F21449B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040ED554-56EB-4D67-82B5-9025F21449B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040ED554-56EB-4D67-82B5-9025F21449B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040ED554-56EB-4D67-82B5-9025F21449B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
