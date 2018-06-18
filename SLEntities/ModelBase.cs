@@ -19,5 +19,8 @@ namespace SLEntities
 
         [JsonIgnore]
         public bool IsValid { get; set; }
+
+        [JsonIgnore]
+        public bool IsEditing { get; set; }
     }
 }
