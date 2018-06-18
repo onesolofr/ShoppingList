@@ -27,7 +27,7 @@ namespace SLHelpers
             string issuer = _config["Jwt:Issuer"];
             string securityKey = _config["Jwt:Key"];
             double.TryParse(_config["Jwt:ExpiresMinutes"], out double expireDelay);
-
+            
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Name),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
