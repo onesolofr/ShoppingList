@@ -61,7 +61,7 @@ namespace SLHelpers.Exceptions
         }
     }
 
-    static public class TdiExceptionManager
+    static public class SLExceptionManager
     {
         public static T Wrap<T>(T excpetion) where T : Exception
         {
