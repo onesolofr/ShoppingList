@@ -22,12 +22,26 @@ namespace SLHelpers
 
         static public string BuildUserToken(User user)
         {
-            if (user == null) throw new ArgumentNullException(nameof(user), "L'argument ne peut pas être NULL.");
+            if (user == null)
+                throw SLExceptionManager.Wrap(new ArgumentNullException(nameof(user), "L'argument ne peut pas être NULL."));
+
+            if(!_config.ContainsKey("Issuer"))
+                throw SLExceptionManager.Wrap(new ArgumentException(nameof(user), "la clé 'Jwt:Issuer' est absente de la configuration."));
+
+            if (!_config.ContainsKey("Jwt:Key"))
+                throw SLExceptionManager.Wrap(new ArgumentException(nameof(user), "la clé 'Jwt:Key' est absente de la configuration."));
 
             string issuer = _config["Jwt:Issuer"];
             string securityKey = _config["Jwt:Key"];
             double.TryParse(_config["Jwt:ExpiresMinutes"], out double expireDelay);
-            
+
+            if (issuer.IsNullOrWhiteSpace())
+                throw SLExceptionManager.Wrap(new ArgumentNullException(nameof(issuer), "L'argument ne peut pas être NULL."));
+
+            if (securityKey.IsNullOrWhiteSpace())
+                throw SLExceptionManager.Wrap(new ArgumentNullException(nameof(securityKey), "L'argument ne peut pas être NULL."));
+
+
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Name),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),

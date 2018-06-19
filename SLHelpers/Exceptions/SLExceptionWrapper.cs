@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using SLHelpers;
 
-namespace SLHelpers.Exceptions
+namespace SLHelpers
 {
     public class SLExceptionWrapper : Exception
     {
