@@ -8,9 +8,14 @@ namespace SLHelpers
 {
     static public class ConfigurationHelpers
     {
-        static public bool ContainsKey(this IConfiguration config, string key)
+        static public bool ContainsSection(this IConfiguration config, string section)
         {
-            return config.GetChildren().Any(item => item.Key == key);
+            return config.GetSection(section).Value != null;
+        }
+
+        static public string GetSectionValue(this IConfiguration config, string section)
+        {
+            return config.GetSection(section).Value;
         }
     }
 }
