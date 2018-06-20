@@ -25,9 +25,9 @@ namespace SLApp.Controllers
         }
 
         [HttpPost, AllowAnonymous]
-        public void Post([FromBody] User value)
+        public IActionResult Post([FromBody] User value)
         {
-            TokenHelpers.BuildUserToken(value);
+            return Ok(new { token = TokenHelpers.BuildUserToken(value) });
         }
 
         [HttpPut("{id}"), Authorize]
