@@ -12,6 +12,15 @@ namespace SLApp.Controllers
     [Route("api/[controller]"), ApiController]
     public class TokenController : ControllerBase
     {
+
+        UserDbContext _dbContext;
+
+        public TokenController(UserDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+
         [HttpGet, Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -27,7 +36,18 @@ namespace SLApp.Controllers
         [HttpPost, AllowAnonymous]
         public IActionResult Post([FromBody] User value)
         {
-            return Ok(new { token = TokenHelpers.BuildUserToken(value) });
+            if (value == null)
+                throw SLExceptionManager.Wrap(new ArgumentNullException(nameof(value), "L'argument ne peut pas être NULL."));
+
+            IActionResult response = Unauthorized();
+
+            User user = _dbContext.DbUsers.FirstOrDefault(p => p.Name == value.Name);
+            if (user != null)
+            {
+                response = Ok(value: new { token = TokenHelpers.BuildUserToken(value) });
+            }
+
+            return response;
         }
 
         [HttpPut("{id}"), Authorize]

@@ -63,11 +63,11 @@ namespace SLHelpers
 
     static public class SLExceptionManager
     {
-        public static T Wrap<T>(T excpetion) where T : Exception
+        public static T Wrap<T>(T exception) where T : Exception
         {
-            new SLExceptionWrapper(excpetion);
+            new SLExceptionWrapper(exception);
 
-            return excpetion;
+            return exception;
         }
     }
 }

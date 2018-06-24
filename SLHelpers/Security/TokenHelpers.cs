@@ -13,14 +13,11 @@ namespace SLHelpers
     {
         static IConfiguration _config;
 
-        static TokenHelpers()
-        {
-            _config = new ConfigurationBuilder()
+        static TokenHelpers() => _config = new ConfigurationBuilder()
            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
            .Build();
-        }
 
-        static public string BuildUserToken(User user)
+        public static string BuildUserToken(User user)
         {
             if (user == null)
                 throw SLExceptionManager.Wrap(new ArgumentNullException(nameof(user), "L'argument ne peut pas être NULL."));

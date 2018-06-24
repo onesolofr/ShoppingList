@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using SLEntities;
 using Microsoft.EntityFrameworkCore;
+using SLHelpers;
 
 namespace SLApp
 {
@@ -35,14 +36,14 @@ namespace SLApp
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = Configuration["Jwt:Issuer"],
-                        ValidAudience = Configuration["Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                        ValidIssuer = Configuration.GetSectionValue(ConfigurationCodes.JwtIssuerKey),
+                        ValidAudience = Configuration.GetSectionValue(ConfigurationCodes.JwtIssuerKey),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSectionValue(ConfigurationCodes.JwtKeyKey)))
                     };
                 });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<UserDbContext>(options => { options.UseSqlite(Configuration.GetConnectionString("")); });
+            services.AddDbContext<UserDbContext>(options => { options.UseSqlite(Configuration.GetConnectionString("sldb")); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

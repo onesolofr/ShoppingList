@@ -1,21 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SLEntities
 {
     public class UserDbContext : DbContext
     {
-        public UserDbContext(DbContextOptions<UserDbContext> options)
-            : base(options)
-        {
-        }
+        public DbSet<User> DbUsers { get; set; } 
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
-            base.OnModelCreating(builder);
+
         }
     }
 }
