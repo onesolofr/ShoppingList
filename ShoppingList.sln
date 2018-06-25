@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLUnitTest", "SLUnitTest\SL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLHelpers", "SLHelpers\SLHelpers.csproj", "{7132A774-B5C6-4979-AFE2-F43DEB9F70BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePoc", "ConsolePoc\ConsolePoc.csproj", "{BD109536-CD7D-46ED-A2EC-8B8E21F92999}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7132A774-B5C6-4979-AFE2-F43DEB9F70BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7132A774-B5C6-4979-AFE2-F43DEB9F70BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7132A774-B5C6-4979-AFE2-F43DEB9F70BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD109536-CD7D-46ED-A2EC-8B8E21F92999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD109536-CD7D-46ED-A2EC-8B8E21F92999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD109536-CD7D-46ED-A2EC-8B8E21F92999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD109536-CD7D-46ED-A2EC-8B8E21F92999}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
