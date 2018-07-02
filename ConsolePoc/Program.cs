@@ -1,4 +1,5 @@
-﻿using SLEntities;
+﻿using Newtonsoft.Json;
+using SLEntities;
 using System;
 
 namespace ConsolePoc
@@ -7,8 +8,6 @@ namespace ConsolePoc
     {
         static void Main(string[] args)
         {
-
-
             User u = new User
             {
                 CreateBy = new User { Name = "samir" },
@@ -20,6 +19,7 @@ namespace ConsolePoc
                 Id = 1
             };
 
+            string result =  JsonConvert.SerializeObject(u);
 
             Console.ReadLine();
         }

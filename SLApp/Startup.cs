@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 using SLEntities;
 using Microsoft.EntityFrameworkCore;
 using SLHelpers;
+using System.Collections.Generic;
+using SLHelpers.AppEnvironement;
 
 namespace SLApp
 {
@@ -66,6 +68,17 @@ namespace SLApp
             //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseAuthentication();
+
+            /*ne pas faire ici*/
+            IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            config.GetSection("EnvironementVariabless").Bind(EnvironementVariables.Instance);
+            IList<ConnectionProvider> cnx = new List<ConnectionProvider>();
+            config.GetSection("ConnectionStrings").Bind(cnx);
+            foreach (var item in cnx)
+            {
+                EnvironementVariables.Instance.AddConnectionProviders(item);
+            }
+
         }
     }
 }

@@ -26,4 +26,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AppEnvironement\" />
+  </ItemGroup>
+
 </Project>
