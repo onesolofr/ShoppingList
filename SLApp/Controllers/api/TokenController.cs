@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,12 +13,12 @@ namespace SLApp.Controllers
     [Route("api/[controller]"), ApiController]
     public class TokenController : ControllerBase
     {
-        UserDbContext _dbContext;
+        //UserDbContext _dbContext;
 
-        public TokenController(UserDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        //public TokenController(UserDbContext dbContext)
+        //{
+        //    _dbContext = dbContext;
+        //}
 
         [HttpPost, AllowAnonymous]
         public IActionResult Post([FromBody] User value)
@@ -28,11 +28,7 @@ namespace SLApp.Controllers
 
             IActionResult response = Unauthorized();
 
-            User user = _dbContext.DbUsers.FirstOrDefault(p => p.Name == value.Name);
-
-
-            var result = _dbContext.DbUsers.FromSql("SELECT * FROM users, json_each(users.Content,'$.Name') AS content WHERE content.value = 'samir'");
-
+            var user = new User();
 
             if (user != null)
             {

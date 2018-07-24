@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -9,12 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.EntityFrameworkCore.Sqlite;
 using SLEntities;
-using Microsoft.EntityFrameworkCore;
 using SLHelpers;
 using System.Collections.Generic;
 using SLHelpers.AppEnvironement;
+using System.IO;
 
 namespace SLApp
 {
@@ -45,7 +44,7 @@ namespace SLApp
                 });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<UserDbContext>(options => { options.UseSqlite(Configuration.GetConnectionString("sldb")); });
+            //services.AddDbContext<UserDbContext>(options => { options.UseSqlite(Configuration.GetConnectionString("sldb")); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,11 +64,13 @@ namespace SLApp
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseMvc();
             app.UseAuthentication();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
-            /*ne pas faire ici*/
+            /*ne pas faire ça ici*/
             IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             config.GetSection("EnvironementVariabless").Bind(EnvironementVariables.Instance);
             IList<ConnectionProvider> cnx = new List<ConnectionProvider>();
